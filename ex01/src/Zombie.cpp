@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                            ::::::::        */
-/*   Zombie.hpp                                              :+:    :+:       */
+/*   Zombie.cpp                                              :+:    :+:       */
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2026/01/28 15:44:54 by avaliull            #+#    #+#           */
-/*   Updated: 2026/01/28 18:29:55 by avaliull            ########   odam.nl   */
+/*   Created: 2026/01/28 15:46:56 by avaliull            #+#    #+#           */
+/*   Updated: 2026/01/28 18:09:57 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "Zombie.hpp"
+#include <iostream>
 
-# pragma once
+using std::cout;
 
-#include <string>
+Zombie::Zombie() {
+}
 
-class Zombie {
-public:
-	Zombie(std::string name);
-	~Zombie();
+Zombie::Zombie(std::string name) {
+	assignName(name);
+}
 
-	void	announce(
-		void
-	);
+Zombie::~Zombie() {
+	cout << "Zombie " << _name << " is DESTROYED!\n";
+}
 
-private:
-	std::string _name;
-};
+void	Zombie::announce (
+	void
+) {
+	cout << _name << ": BraiiiiiiinnnzzzZ...\n";
+}
 
-Zombie	*newZombie(
-	std::string name
-);
-void	randomChamp(
-	std::string name
-);
-
-#endif /*# define ZOBMIE_HPP*/
+void Zombie::assignName(std::string name) {
+	_name = name;
+}

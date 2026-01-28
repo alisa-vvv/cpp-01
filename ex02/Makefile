@@ -12,13 +12,9 @@
 
 .DEFAULT_GOAL := all
 
-NAME	=	zombie_hoard
+NAME	=	HITHISISBRAIN
 
 CXXFILES	=	main.cpp\
-				Zombie.cpp\
-				newZombie.cpp\
-				randomChamp.cpp\
-				zombieHoard.cpp
 
 OFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.o))
 DEPFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.d))
@@ -50,9 +46,7 @@ CC	= c++
 CPPFLAGS	= $(INCFLAGS) -MMD -MP
 
 INCFLAGS	= $(addprefix -I,$(INCLUDE))
-MAX_HOARD_SIZE	=8192
-#CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	= -Wall -Wextra -Werror -D MAX_HOARD_SIZE=$(MAX_HOARD_SIZE)
+CFLAGS	= -Wall -Wextra -Werror
 #CFLAGS	= -Wall -Wextra -Werror -fsanitize=undefined
 LDFLAGS	=
 INPUT	=

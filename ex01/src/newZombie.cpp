@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                            ::::::::        */
-/*   Zombie.hpp                                              :+:    :+:       */
+/*   newZombie.cpp                                           :+:    :+:       */
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2026/01/28 15:44:54 by avaliull            #+#    #+#           */
-/*   Updated: 2026/01/28 18:29:55 by avaliull            ########   odam.nl   */
+/*   Created: 2026/01/28 15:59:08 by avaliull            #+#    #+#           */
+/*   Updated: 2026/01/28 16:03:18 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-
-# pragma once
-
-#include <string>
-
-class Zombie {
-public:
-	Zombie(std::string name);
-	~Zombie();
-
-	void	announce(
-		void
-	);
-
-private:
-	std::string _name;
-};
+#include "Zombie.hpp"
 
 Zombie	*newZombie(
 	std::string name
-);
-void	randomChamp(
-	std::string name
-);
-
-#endif /*# define ZOBMIE_HPP*/
+)
+{
+	Zombie *zombie = new Zombie(name);
+	zombie->announce();
+	return (zombie);
+}
