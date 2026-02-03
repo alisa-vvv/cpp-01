@@ -10,13 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <string>
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
-
-using std::cout;
 
 int	main(
 	void
