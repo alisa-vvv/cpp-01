@@ -10,3 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Weapon.hpp"
+#include "HumanB.hpp"
+#include <string>
+#include <iostream>
+
+HumanB::HumanB(
+	std::string name
+) {
+	HumanB::name = name;
+	Weapon = nullptr;
+}
+
+HumanB::~HumanB(
+) {
+}
+
+void	HumanB::attack(
+	void
+) {
+	std::cout << name << " attacks with their ";
+	if (Weapon == nullptr)
+		std::cout << "bare hands!";
+	else
+		std::cout << Weapon->getType();
+	std::cout << '\n';
+}
+
+void	HumanB::setWeapon(
+	class Weapon&	weapon
+) {
+	HumanB::Weapon = &weapon;
+}

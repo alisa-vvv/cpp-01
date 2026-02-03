@@ -10,3 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
+#include <string>
+#include "Weapon.hpp"
+
+class HumanB {
+public:
+	HumanB(
+		std::string name
+	);
+	~HumanB();
+
+	void	attack(void);
+
+	void	setWeapon(
+		class Weapon &weapon
+	);
+
+private:
+	std::string	name;
+	Weapon*		Weapon;
+};

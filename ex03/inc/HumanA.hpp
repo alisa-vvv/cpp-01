@@ -19,7 +19,7 @@ class HumanA {
 public:
 	HumanA(
 		std::string name,
-		Weapon& weapon
+		class Weapon& weapon
 	);
 	~HumanA();
 
@@ -29,4 +29,3 @@ private:
 	std::string	name;
 	Weapon*		Weapon;
 };
-
