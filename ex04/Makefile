@@ -14,7 +14,8 @@
 
 NAME	=	cpp_sed
 
-CXXFILES	=	main.cpp
+CXXFILES	=	main.cpp\
+				sed.cpp
 
 OFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.o))
 DEPFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.d))

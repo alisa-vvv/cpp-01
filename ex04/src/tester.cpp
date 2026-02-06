@@ -1,25 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                            ::::::::        */
-/*   main.cpp                                                :+:    :+:       */
+/*   tester.cpp                                              :+:    :+:       */
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2026/02/03 17:31:30 by avaliull            #+#    #+#           */
-/*   Updated: 2026/02/06 19:12:04 by avaliull            ########   odam.nl   */
+/*   Created: 2026/02/06 19:12:33 by avaliull            #+#    #+#           */
+/*   Updated: 2026/02/06 19:12:34 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "funny_sed.hpp"
-
-int	main(
-	int		argc,
-	char*	argv[]
-) {
-	if (argc != 4) {
-		std::cout << "Program needs 3 arguments: filename, string1 and string2\n";
-		return 1;
-	}
-	return (funny_sed(argv[1], argv[2], argv[3]));
-}
