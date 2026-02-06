@@ -13,19 +13,24 @@
 #include <iostream>
 #include <fstream>
 
-void	find_and_replace_line(
+int	find_and_replace_line(
 	std::string&		next_line,
 	const std::string&	old_str,
 	const std::string&	new_str,
 	std::ofstream&		out_file
 ) {
-		size_t	found_instance = next_line.find(old_str);
-		while (found_instance != std::string::npos) {
-			next_line.erase(found_instance, old_str.length());
-			next_line.insert(found_instance, new_str);
-			found_instance = next_line.find(old_str, found_instance + old_str.length());
-		}
-		out_file << next_line;
+	size_t	found_instance = next_line.find(old_str);
+	while (found_instance != std::string::npos) {
+		next_line.erase(found_instance, old_str.length());
+		next_line.insert(found_instance, new_str);
+		found_instance = next_line.find(old_str, found_instance + old_str.length());
+	}
+	if (out_file.is_open() == false) { // i don't know if i'm making shit up here
+		std::cout << "Lost access to output file. Stopping operation.\n";
+		return 1;
+	}
+	out_file << next_line;
+	return 0;
 }
 
 int	main(
@@ -56,10 +61,11 @@ int	main(
 		return 1;
 	}
 
-	std::string		next_line;
-	while (std::getline(in_file, next_line)) {
+	std::string	next_line;
+	int			err_check = 0;
+	while (err_check == 0 && std::getline(in_file, next_line)) {
 		next_line.append("\n");
-		find_and_replace_line(next_line, argv[2], argv[3], out_file);
+		err_check = find_and_replace_line(next_line, argv[2], argv[3], out_file);
 	}
-	return 0;
+	return err_check;
 }
