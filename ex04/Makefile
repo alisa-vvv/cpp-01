@@ -49,7 +49,7 @@ INCFLAGS	= $(addprefix -I,$(INCLUDE))
 CFLAGS	= -Wall -Wextra -Werror
 #CFLAGS	= -Wall -Wextra -Werror -fsanitize=undefined
 LDFLAGS	=
-INPUT	=
+INPUT	= meowfile bark meow
 
 
 -include $(OFILES:.o=.d)
