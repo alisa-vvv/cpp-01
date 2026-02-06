@@ -13,36 +13,53 @@
 #include <iostream>
 #include <fstream>
 
+void	find_and_replace_line(
+	std::string&		next_line,
+	const std::string&	old_str,
+	const std::string&	new_str,
+	std::ofstream&		out_file
+) {
+		size_t	found_instance = next_line.find(old_str);
+		while (found_instance != std::string::npos) {
+			next_line.erase(found_instance, old_str.length());
+			next_line.insert(found_instance, new_str);
+			found_instance = next_line.find(old_str, found_instance + old_str.length());
+		}
+		out_file << next_line;
+}
+
 int	main(
 	int		argc,
-	[[maybe_unused]] char*	argv[]
+	char*	argv[]
 ) {
 	if (argc != 4) {
 		std::cout << "Program needs 3 arguments: filename, string1 and string2\n";
-		return (1);
+		return 1;
 	}
 
-	std::fstream	target_file(argv[1]);
-	std::string		old_str = argv[2];
-	std::string		new_str = argv[3];
-
-	std::string	file_contents;
-	std::string	next_line;
-
-	while (std::getline(target_file, next_line)) {
-		file_contents.append(next_line);
-		file_contents.append("\n");
+	std::ifstream	in_file(argv[1]);
+	if (in_file.is_open() == false) {
+		std::cout << "File " << argv[1] << " is inaccessible\n";
+		return 1;
 	}
-	std::cout << "File contents before:\n" << file_contents;
-	size_t	found_instance = file_contents.find(old_str);
-	while (found_instance != std::string::npos) {
-		file_contents.erase(found_instance, old_str.length());
-		file_contents.insert(found_instance, new_str);
-		found_instance = file_contents.find(old_str, found_instance + old_str.length());
-	}
-	std::cout << "File contents after:\n" << file_contents;
-	target_file.write(file_contents, file_contents.length());
 
-	target_file.close();
+	const std::string	outfile_name = ((std::string) argv[1]).append(".replace");
+	std::ofstream		trunc_file(outfile_name);
+	if (trunc_file.is_open() == false) {
+		std::cout << "Could not create output file " << outfile_name << '\n';
+		return 1;
+	}
+
+	std::ofstream	out_file(outfile_name, std::ios::app);
+	if (out_file.is_open() == false) {
+		std::cout << "Could not create output file " << outfile_name << '\n';
+		return 1;
+	}
+
+	std::string		next_line;
+	while (std::getline(in_file, next_line)) {
+		next_line.append("\n");
+		find_and_replace_line(next_line, argv[2], argv[3], out_file);
+	}
 	return 0;
 }
