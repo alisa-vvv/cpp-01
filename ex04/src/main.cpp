@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/02/03 17:31:30 by avaliull            #+#    #+#           */
-/*   Updated: 2026/03/13 20:26:21 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/03/13 20:34:34 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,10 @@ int	main(
 	filename_r = "testfiles/imreal.replace";
 	str1 = "meow";
 	str2 = "bark";
-	std::fstream	original_file("testfiles/imreal");
-	original_file << "this meow will be replaced with bark";
+	//std::ofstream	existing_file("testfiles/imreal.replace"); // fix this lol
+	//existing_file << "this text will be truncated";
 	cout << clr_yel << "\tTEST3: .replace file exists and can be modded" << clr_non << '\n';
+	print_file_contents("testfiles/imreal.replace");
 	cout << clr_yel << "OUTPUT: " << clr_non;
 	ret_val = funny_sed(filename, str1, str2);
 	if (ret_val == 0)
