@@ -36,17 +36,6 @@ static int	find_and_replace_line(
 	return 0;
 }
 
-//tests to write:
-//1. file that doesn't exist;
-//2. file that exists but not readabe;
-//3. file.replace already exists and is modifiable;
-//4. file.replace already exists and not modifiable;
-//5. really big file;
-//6. empty file;
-//7. newline shenanigans? maybe
-//8. partial string tests (should all be fine since it's c++)
-//9. filename bigger than PATH_MAX
-//10. file is deleted/access blocked mid execution (shoud i even?)
 int	funny_sed(
 	std::string	filename,
 	std::string	old_str,

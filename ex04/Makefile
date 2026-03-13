@@ -13,15 +13,18 @@
 .DEFAULT_GOAL := all
 
 NAME	=	cpp_sed
+TESTER_NAME	=	tester_cpp_sed
 
 CXXFILES	=	main.cpp\
 				sed.cpp
+TESTER_CXXFILES	=	tester.cpp
 
 OFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.o))
 DEPFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.d))
 
 VPATH	= $(INCLUDE) $(SRCDIRS)
 BUILDDIR = build/
+TESTER_BUILDDIR = tester_build/
 SRCDIR = src/
 INCDIR = inc/
 SRCDIRS = $(SRCDIR)
@@ -50,7 +53,7 @@ INCFLAGS	= $(addprefix -I,$(INCLUDE))
 CFLAGS	= -Wall -Wextra -Werror
 #CFLAGS	= -Wall -Wextra -Werror -fsanitize=undefined
 LDFLAGS	=
-INPUT	= testfiles/meowfile bark meow
+INPUT	= testfiles/meowfile bark meow meow
 
 
 -include $(OFILES:.o=.d)
@@ -62,6 +65,7 @@ $(BUILDDIR)%.o: %.cpp $(INCLUDE) | $(BUILDDIR)
 
 $(NAME): $(OFILES)
 	$(CC) $(CFLAGS) -o $@ $(OFILES) $(LDFLAGS) $(INCFLAGS)
+
 
 #Base/project requirements
 all: $(NAME)
@@ -84,6 +88,8 @@ debug: clean $(NAME)
 gdb: fclean debug
 	gdb -tui ./$(NAME)
 test: $(NAME) run
+tester: $(TESTER_NAME)
+	 ./$(TESTER_NAME)
 run:
 	./$(NAME) $(INPUT)
 leak:
@@ -94,4 +100,4 @@ val:
 	valgrind --track-fds=yes --track-origins=yes \
 	--leak-check=full --show-leak-kinds=all ./$(NAME) $(INPUT)
 
-.PHONY:	clangd all clean fclean re test run leak debug gdb
+.PHONY:	clangd all clean fclean re test run leak debug gdb tester
