@@ -4,12 +4,11 @@ int	main(
 	int	argc,
 	char* argv[]
 ) {
-	Harl	Harl;
+	Harl	harl;
 
 	if (argc != 2)
 		return (1);
-
-	Harl.complain(argv[1]);
+	harl.complain(argv[1]);
 	//Harl.complain("DEBUG");
 	//Harl.complain("INFO");
 	//Harl.complain("WARNING");

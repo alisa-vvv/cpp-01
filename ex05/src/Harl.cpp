@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/03/16 17:37:46 by avaliull            #+#    #+#           */
-/*   Updated: 2026/03/16 18:11:09 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/03/16 19:21:07 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,19 @@ void	Harl::complain(
 ) {
 	std::cout << "level: " << level << '\n';
 
+	Harl::harl_member debug_ptr = &Harl::debug;
+	Harl::harl_member info_ptr = &Harl::info;
+	Harl::harl_member warning_ptr = &Harl::warning;
+	Harl::harl_member error_ptr = &Harl::error;
+
 	if (level == "DEBUG")
-		Harl::debug();
+		(this->*debug_ptr)();
 	if (level == "INFO")
-		Harl::info();
+		(this->*info_ptr)();
 	if (level == "WARNING")
-		Harl::warning();
+		(this->*warning_ptr)();
 	if (level == "ERROR")
-		Harl::error();
+		(this->*error_ptr)();
 }
 
 void	Harl::debug(
