@@ -12,10 +12,10 @@
 
 .DEFAULT_GOAL := all
 
-NAME	=	cpp_sed
+NAME	=	harl
 
 CXXFILES	=	main.cpp\
-				sed.cpp
+				Harl.cpp
 
 OFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.o))
 DEPFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.d))
@@ -50,7 +50,7 @@ INCFLAGS	= $(addprefix -I,$(INCLUDE))
 CFLAGS	= -Wall -Wextra -Werror
 #CFLAGS	= -Wall -Wextra -Werror -fsanitize=undefined
 LDFLAGS	=
-INPUT	=
+INPUT	= DEBUG
 
 
 -include $(OFILES:.o=.d)
