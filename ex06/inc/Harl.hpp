@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                            ::::::::        */
-/*   tester.cpp                                              :+:    :+:       */
+/*   Harl.hpp                                                :+:    :+:       */
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2026/02/06 19:12:33 by avaliull            #+#    #+#           */
-/*   Updated: 2026/03/13 19:07:29 by avaliull            ########   odam.nl   */
+/*   Created: 2026/03/16 17:33:20 by avaliull            #+#    #+#           */
+/*   Updated: 2026/03/16 19:30:30 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <unistd.h>
+#include <string>
 
-int	main(void)
-{
-	std::cout << "Hello world\n";
+class	Harl {
+public:
+	Harl();
+	~Harl();
 
-	std::string	input[4];
-}
+	void	filter_complaint(
+		std::string log_level
+	);
+private:
+	typedef void	(Harl::*harl_member)(void);
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
+};
