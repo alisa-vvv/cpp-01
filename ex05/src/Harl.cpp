@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/03/16 17:37:46 by avaliull            #+#    #+#           */
-/*   Updated: 2026/03/16 19:21:07 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/03/16 19:34:09 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,43 +27,35 @@ Harl::~Harl(
 void	Harl::complain(
 	std::string	level
 ) {
-	std::cout << "level: " << level << '\n';
-
-	Harl::harl_member debug_ptr = &Harl::debug;
-	Harl::harl_member info_ptr = &Harl::info;
-	Harl::harl_member warning_ptr = &Harl::warning;
-	Harl::harl_member error_ptr = &Harl::error;
-
-	if (level == "DEBUG")
-		(this->*debug_ptr)();
-	if (level == "INFO")
-		(this->*info_ptr)();
-	if (level == "WARNING")
-		(this->*warning_ptr)();
-	if (level == "ERROR")
-		(this->*error_ptr)();
+	Harl::harl_member	harlptr_arr[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string			levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	
+	for (int i = 0; i < 4; i++) {
+		if (levels[i] == level)
+			(this->*harlptr_arr[i])();
+	}
 }
 
 void	Harl::debug(
 	void
 ) {
-	std::cout << "this exercise is really dumb\n";
+	std::cout << "DEBUG: this is a debug message\n";
 }
 
 void	Harl::info(
 	void
 ) {
-	std::cout << "it doesn't explain or demosntrate anything about member function pointers\n";
+	std::cout << "INFO: this is useful info\n";
 }
 
 void	Harl::warning(
 	void
 ) {
-	std::cout << "changing Karen to Harl doesn't make the examples less tasteless\n";
+	std::cout << "WARNING: this is a warning\n";
 }
 
 void	Harl::error(
 	void
 ) {
-	std::cout << "what the fuck is going on\n";
+	std::cout << "ERROR: this is an error\n";
 }

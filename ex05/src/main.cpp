@@ -9,8 +9,10 @@ int	main(
 	if (argc != 2)
 		return (1);
 	harl.complain(argv[1]);
-	//Harl.complain("DEBUG");
-	//Harl.complain("INFO");
-	//Harl.complain("WARNING");
-	//Harl.complain("ERROR");
+	// tests
+	//harl.complain("DEBUG");
+	//harl.complain("INFO");
+	//harl.complain("WARNING");
+	//harl.complain("ERROR");
+	//harl.complain("FAKE_LEVEL");
 }
