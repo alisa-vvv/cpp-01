@@ -25,6 +25,7 @@ HumanA::HumanA(
 
 HumanA::~HumanA(
 ) {
+//	std::cout << "HumanA " << name << " called its destructor" << '\n';
 }
 
 void	HumanA::attack(

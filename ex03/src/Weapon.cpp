@@ -12,6 +12,7 @@
 
 #include <string>
 #include "Weapon.hpp"
+//#include <iostream>
 
 using std::string;
 
@@ -21,6 +22,7 @@ Weapon::Weapon(
 	setType(weapon_type);
 }
 Weapon::~Weapon() {
+	//std::cout << "Weapon " << type << " called its destructor" << '\n';
 }
 
 const std::string&	Weapon::getType(

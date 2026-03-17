@@ -24,6 +24,7 @@ HumanB::HumanB(
 
 HumanB::~HumanB(
 ) {
+//	std::cout << "HumanB " << name << " called its destructor" << '\n';
 }
 
 void	HumanB::attack(
