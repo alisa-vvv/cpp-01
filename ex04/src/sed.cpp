@@ -28,7 +28,7 @@ static int	find_and_replace_line(
 		next_line.insert(found_instance, new_str);
 		found_instance = next_line.find(old_str, found_instance + old_str.length());
 	}
-	if (out_file.is_open() == false) { // i don't know if i'm making shit up here
+	if (out_file.is_open() == false) {
 		std::cout << "Lost access to output file. Stopping operation.\n";
 		return 1;
 	}

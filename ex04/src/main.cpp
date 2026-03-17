@@ -20,7 +20,6 @@ int	main(
 	int		argc,
 	char*	argv[]
 ) {
-	cout << "argument count? " << argc;
 	if (argc > 4) {
 		cout << "Too nany arguments! Need: filename, string1 and string2\n";
 		return 1;
